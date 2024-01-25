@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>JS: Basic Presentation</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
+
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section style="text-align: center">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/768px-JavaScript-logo.png"
+            alt="JavaScript Logo"
+            style="width: 100px; height: auto"
+          />
+          <div style="display: inline-block; width: 100%">
+            <h2
+              style="
+                width: 210px;
+                margin: 0 auto;
+                background: linear-gradient(
+                  to right,
+                  violet,
+                  indigo,
+                  blue,
+                  green,
+                  yellow,
+                  orange,
+                  red
+                );
+                -webkit-background-clip: text;
+                color: transparent;
+                text-align: center;
+              "
+            >
+              Basic
+            </h2>
+          </div>
+          <h4>Topics:</h4>
+          <div style="display: flex; justify-content: space-between; flex-direction: row">
+            <div style="flex: 1">
+              <ul style="font-size: 2rem">
+                <li>Variables and Data Types</li>
+                <li>Operators, Controls, Loops</li>
+                <li>Functions</li>
+              </ul>
+            </div>
+            <div style="flex: 1">
+              <ul style="font-size: 2rem">
+                <li>Scope, Classes, Prototypes, and Asynchronous</li>
+                <li>Asynchronous</li>
+                <li>ES6</li>
+              </ul>
+            </div>
+          </div>
+          <p style="font-size: 0.5rem">JavaScript - круто, наверное</p>
+          <p style="font-size: 0.5rem">by: <a href="https://github.com/seygorin"  target="_blank">Sergey Gorin</a></p>
+
+          <aside class="notes">
+            JavaScript — это язык программирования, который используется для создания интерактивных
+            и динамичных веб-страниц. Это один из основных языков веб-разработки, работающий на
+            стороне клиента и сервера.
+          </aside>
+        </section>
+
+        <section>
+          <h3
+            style="
+              background: linear-gradient(
+                to right,
+                violet,
+                indigo,
+                blue,
+                green,
+                yellow,
+                orange,
+                red
+              );
+              -webkit-background-clip: text;
+              color: transparent;
+              text-align: center;
+            "
+          >
+            Variables and Data Types
+          </h3>
+          <section>
+            <aside class="notes">
+              Переменные в JavaScript являются контейнерами для хранения значений данных или можно
+              сказать, что это «именованное хранилище» .
+              <br />
+              Cуществуют три способа объявления переменных: <br />
+              let для объявления переменных, значения которых могут изменяться. <br />const для
+              объявления констант, значения которых не изменяются после присвоения. <br />var для
+              объявления переменных со старым способом области видимости.
+            </aside>
+
+            <h4>Variables</h4>
+            <p>Variables are containers for storing data values.</p>
+            <p>
+              In JavaScript, we declare variables using <br /><code>let</code>, <code>const</code>,
+              or <code>var</code>.
+            </p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-24">
+				let message = "Hello World!";
+				const PI = 3.14159265358979323846;
+				var isJS = true;
+						</code></pre>
+          </section>
+          <section>
+            <aside class="notes">
+              JavaScript предоставляет несколько встроенных типов данных. Понимание этих типов
+              данных критически важно для эффективного программирования.
+            </aside>
+
+            <h4>Data Types</h4>
+            <p>
+              JavaScript provides several built-in data types. Understanding these is crucial for
+              effective programming.
+            </p>
+          </section>
+          <section>
+            <aside class="notes">Number: Представляет целые и числа с плавающей точкой.</aside>
+
+            <h5>Number</h5>
+            <p>Represents both integer and floating-point numbers.</p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-24">let num = 3; // Integer
+let price = 99.99; // Floating-point number</code></pre>
+          </section>
+          <section>
+            <aside class="notes">
+              String: Представляет текстовые данные. Строки заключаются в кавычки.
+            </aside>
+
+            <h5>String</h5>
+            <p>Represents textual data. Strings are enclosed in quotes.</p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-24">let name = "Alice";
+let greeting = 'Hello';</code></pre>
+          </section>
+          <section>
+            <aside class="notes">
+              Array: Используется для хранения множества значений в одной переменной.
+            </aside>
+
+            <h5>Array</h5>
+            <p>Used to store multiple values in a single variable.</p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-24">let colors = ['Red', 'Green', 'Blue'];</code></pre>
+          </section>
+          <section>
+            <aside class="notes">
+              Object: Используется для хранения коллекций данных и более сложных сущностей.
+            </aside>
+
+            <h5>Object</h5>
+            <p>Used to store collections of data and more complex entities.</p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-24">let person = { name: "John", age: 30 };</code></pre>
+          </section>
+          <section>
+            <aside class="notes">
+              Boolean: Представляет логическую сущность и может иметь два значения: true или false.
+            </aside>
+
+            <h5>Boolean</h5>
+            <p>
+              Represents a logical entity and can have two values: <code>true</code> or
+              <code>false</code>.
+            </p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-24">let isAvailable = true;
+let isFinished = false;</code></pre>
+          </section>
+          <section>
+            <aside class="notes">
+              Undefined: Переменная, которой не присвоено значение, имеет тип undefined.
+            </aside>
+
+            <h5>Undefined</h5>
+            <p>A variable that has not been assigned a value is of type <code>undefined</code>.</p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-24">let result;</code></pre>
+          </section>
+          <section>
+            <aside class="notes">
+              Null: Представляет намеренное отсутствие какого-либо значения объекта.
+            </aside>
+
+            <h5>Null</h5>
+            <p>Represents the intentional absence of any object value.</p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-24">let emptyValue = null;</code></pre>
+          </section>
+        </section>
+
+        <section>
+          <h3
+            style="
+              background: linear-gradient(
+                to right,
+                violet,
+                indigo,
+                blue,
+                green,
+                yellow,
+                orange,
+                red
+              );
+              -webkit-background-clip: text;
+              color: transparent;
+              text-align: center;
+            "
+          >
+            Operators, Controls, Loops
+          </h3>
+
+          <section>
+            <aside class="notes">
+              Операторы используются для выполнения операций с переменными и значениями. Они
+              включают в себя арифметические операторы для базовых математических операций,
+              операторы сравнения для определения отношений между значениями, и логические операторы
+              для реализации логических операций.
+            </aside>
+
+            <p><i> Operators </i> are used to perform operations on variables and values.</p>
+
+            <pre><code class="javascript" data-trim data-line-numbers="1-24">
+						// Arithmetic Operators
+
+						let sum = 10 + 5;   // Addition
+						let diff = 10 - 5;  // Subtraction
+						let prod = 10 * 5;  // Multiplication
+						let div = 10 / 5;   // Division
+						let mod = 10 % 5;   // Modulus
+						
+						// Comparison Operators
+
+						let isGreater = sum > 10;  // Greater than
+						let isLesser = sum < 10;   // Lesser than
+
+						// Logical Operators
+
+						let andOp = (sum > 5) && (sum < 15);  // AND
+						let orOp = (sum < 5) || (sum > 15);   // OR
+						let notOp = !(sum == 10);             // NOT
+						</code></pre>
+          </section>
+
+          <section>
+            <aside class="notes">
+              Условные операторы используются для выполнения различных действий на основе различных
+              условий. Они позволяют программе принимать решения и изменять поведение в зависимости
+              от определенных условий.
+            </aside>
+
+            <h5><i>Control</i> Conditional Statements</h5>
+            <p>
+              Conditional statements are used to perform different actions based on different
+              conditions.
+            </p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-24">
+						if (sum > 10) {
+							console.log("Greater than 10");
+						} else {
+							console.log("Less or equal to 10");
+						}
+						</code></pre>
+          </section>
+
+          <section>
+            <aside class="notes">
+              Оператор switch заменяет множество проверок if и используется для выполнения различных
+              действий на основе множества условий. Это упрощает код, когда необходимо сравнить одну
+              переменную со многими возможными значениями.
+            </aside>
+
+            <h5><i>Control</i> Switch Statement</h5>
+            <p>A switch statement can replace multiple if checks.</p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-24">
+						switch(sum) {
+							case 10:
+								console.log("Exactly 10");
+								break;
+							default:
+								console.log("Not 10");
+						}
+						</code></pre>
+          </section>
+
+          <section>
+            <aside class="notes">
+              Циклы в JavaScript — это инструменты для многократного выполнения блока кода, часто
+              используемые для обработки коллекций данных или выполнения задачи до наступления
+              определенного условия. Основные типы циклов в JavaScript включают:
+              <br />
+              - `for`: Предназначен для повторения кода определенное количество раз.
+              <br />
+              - `while`: Выполняет блок кода, пока его условие оценивается как истинное. Этот цикл
+              идеален, когда количество итераций неизвестно до начала выполнения цикла.
+              <br />
+              - `do-while`: Похож на `while`, но гарантирует выполнение блока кода хотя бы один раз,
+              поскольку условие проверяется после выполнения блока кода.
+              <br />
+              При работе с циклами важно управлять стеком вызовов и потоками выполнения, чтобы
+              избежать проблем - переполнение стека или зависание интерфейса.
+            </aside>
+
+            <h5>
+              <i>Loops</i> can execute a block of code a <br />
+              number of times.
+            </h5>
+
+            <pre><code class="javascript" data-trim data-line-numbers="1-24">
+						// For Loop
+						for (let i = 0; i < 5; i++) {
+							console.log(i);
+						}
+
+						// While Loop
+						let i = 0;
+						while (i < 5) {
+							console.log(i);
+							i++;
+						}
+
+						// Do-While Loop
+						do {
+							console.log(i);
+							i++;
+						} while (i < 5);
+						</code></pre>
+          </section>
+        </section>
+
+        <section>
+          <h2
+            style="
+              background: linear-gradient(
+                to right,
+                violet,
+                indigo,
+                blue,
+                green,
+                yellow,
+                orange,
+                red
+              );
+              -webkit-background-clip: text;
+              color: transparent;
+              text-align: center;
+            "
+          >
+            Functions
+          </h2>
+          <section>
+            <aside class="notes">
+              Функции в JavaScript являются одним из основных строительных блоков.
+              Они позволяют определить блоки кода для многократного использования, что улучшает
+              структурированность и поддерживаемость кода. Функции могут быть объявлены разными
+              способами и иметь разное поведение в зависимости от контекста.
+            </aside>
+            <p>
+              Functions are one of the fundamental building blocks in JavaScript. They allow you to
+              define reusable code blocks.
+            </p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-10">
+				// Function Declaration
+				function greet() {
+					console.log("Hello World!");
+				}
+				
+				// Function Invocation
+				greet();
+						</code></pre>
+          </section>
+          <section>
+            <aside class="notes">
+              Также функции могут принимать параметры, что делает их гибкими и многоразовыми.
+              Параметры позволяют передавать в функцию значения, которые могут быть использованы
+              внутри неё для выполнения определённых операций или вычислений. Это один из способов
+              обеспечения модульности и переиспользования кода.
+            </aside>
+            <h5>Function Parameters</h5>
+            <p>Functions can take parameters, allowing you to pass values into them.</p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-8">
+				function greet(name) {
+					console.log("Hello " + name + "!");
+				}
+				
+				greet('Alice'); // Hello Alice!
+						</code></pre>
+          </section>
+          <section>
+            <aside class="notes">
+              Функции в JavaScript могут возвращать значения, что позволяет использовать результат
+              их работы в других частях программы. Механизм возвращения значений делает функции ещё
+              более мощным инструментом, позволяя им воздействовать на ход выполнения программы и
+              обмениваться данными между различными частями кода.
+            </aside>
+            <h5>Return Values</h5>
+            <p>Functions can return values back to the caller.</p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-6">
+				function add(a, b) {
+					return a + b;
+				}
+				
+				let sum = add(5, 3); // sum is 8
+						</code></pre>
+          </section>
+
+          <section>
+            <aside class="notes">
+              Замыкания в JavaScript — это функции, которые запоминают и имеют доступ к переменным
+              из своей области видимости, даже после того, как функция, в которой они были созданы,
+              завершила выполнение. Это позволяет использовать замыкания для сохранения состояния и
+              создания приватных переменных. В примере выше, функция внутри `makeCounter` создаёт
+              замыкание вокруг переменной `count`, позволяя ей увеличиваться с каждым вызовом,
+              несмотря на то, что внешняя функция завершила выполнение.
+            </aside>
+
+            <h5><i>Closure Concept</i></h5>
+            <p>A closure is a function that remembers its outer variables and can access them.</p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-10">
+                function makeCounter() {
+                    let count = 0;
+                    return function() {
+                        return count++;
+                    };
+                }
+                let counter = makeCounter();
+                console.log(counter()); // 0
+                console.log(counter()); // 1
+            </code></pre>
+          </section>
+
+          <section>
+            <aside class="notes">
+              Анонимные функции это функции без имени, которые часто используются в качестве
+              аргументов для других функций или присваиваются переменным. Они предоставляют удобный
+              способ создания компактных и самодостаточных блоков кода, что особенно полезно в
+              сценариях, где функция используется единожды или её логика относительно проста. В
+              отличие от Function Declarations, Function Expressions не поднимаются (hoisting) и их
+              можно использовать только после определения.
+            </aside>
+            <h5>Anonymous Functions (Function Expressions)</h5>
+            <p>Functions can be defined without a name and can be assigned to variables.</p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-7">
+              // Function Expressions
+              const square = function(number) {
+                return number * number;
+              };
+              
+              console.log(square(4)); // Output: 16
+            </code></pre>
+          </section>
+
+          <section>
+            <aside class="notes">
+              Стрелочные функции, введённые в ES6, предлагают более краткий синтаксис для написания
+              функций. Они особенно удобны для коротких выражений и функций обратного вызова
+              (callbacks). В отличие от традиционных функций, <code>this</code> в стрелочных
+              функциях не создается при каждом вызове функции. Вместо этого, <code>this</code> в
+              стрелочных функциях наследуется из внешнего контекста, в котором эта функция была
+              определена. Это означает, что <code>this</code> внутри стрелочной функции указывает на
+              <code>this</code> из его лексического окружения.
+            </aside>
+
+            <h5>Arrow Functions</h5>
+            <p>Introduced in ES6, arrow functions offer a concise syntax for writing functions.</p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-4">
+				const multiply = (a, b) => a * b;
+				
+				console.log(multiply(2, 3)); // Output: 6
+						</code></pre>
+          </section>
+
+          <section>
+            <aside class="notes">
+              Callback-функции в JavaScript используются для обработки асинхронных операций и
+              событий. Они передаются в качестве аргументов другим функциям и вызываются по
+              завершению определённой задачи. Это позволяет управлять порядком выполнения кода,
+              особенно в асинхронных сценариях, таких как запросы к серверу или обработка событий.
+            </aside>
+            <h5>Callback Functions</h5>
+            <p>
+              Callback functions are passed to other functions as arguments and executed after a
+              task is completed.
+            </p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-20">
+              function processData(data, callback) {
+                console.log('Processing data...');
+                callback(data);
+              }
+          
+              processData('Sample data', data => {
+                console.log('Data received: ' + data);
+              });
+              // Processing data...
+              // Data received: Sample data
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <h2
+            style="
+              background: linear-gradient(
+                to right,
+                violet,
+                indigo,
+                blue,
+                green,
+                yellow,
+                orange,
+                red
+              );
+              -webkit-background-clip: text;
+              color: transparent;
+              text-align: center;
+              font-size: 40px;
+            "
+          >
+            Scope, Classes, Prototypes, <br />
+            and Asynchronous
+          </h2>
+
+          <section>
+            <aside class="notes">
+              Область видимости в JavaScript определяет, где переменные и функции доступны для
+              использования. Существуют два основных типа областей видимости: глобальная и
+              локальная. Глобальная область видимости означает, что переменная доступна из любой
+              части кода, в то время как локальная область видимости ограничивается блоком кода,
+              например функцией. JavaScript также поддерживает лексическую область видимости, что
+              означает, что область видимости переменной определяется её местоположением во время
+              написания кода.
+            </aside>
+
+            <h4 style="font-size: 20px"><i>Scope</i></h4>
+            <p style="font-size: 20px">
+              Scope in JavaScript refers to the current context of code, which determines the
+              accessibility of variables.
+            </p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-20">
+              let global = 'Accessible globally'; // Global scope
+              
+              function exampleFunction() {
+                  let x = 'Declared inside the function'; // Local scope
+                  console.log(global); // OK
+                  if (true) {
+                      let y = 'Declared inside the block'; // Block scope
+                      console.log(x); // OK
+                      console.log(y); // OK
+                  }
+                  // console.log(y); // Error: y is not defined
+              }
+              exampleFunction();
+              // console.log(x); // Error: x is not defined
+						</code></pre>
+          </section>
+
+          <section>
+            <aside class="notes">
+              Классы в JavaScript представляют собой шаблоны для создания объектов и инкапсуляции
+              данных. Классы вводят понятие наследования, позволяя создавать новые классы на основе
+              существующих. Конструктор класса используется для инициализации новых объектов, а
+              методы класса определяют поведение этих объектов. Синтаксис классов в JavaScript
+              представляет собой синтаксический сахар над прототипным наследованием.
+            </aside>
+
+            <h4><i>Classes</i></h4>
+            <p>Classes are a template for creating objects and encapsulate data for the object.</p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-10">
+							class Car {
+								constructor(brand) {
+									this.carname = brand;
+								}
+								present() {
+									return 'I have a ' + this.carname;
+								}
+							}
+							let myCar = new Car("Ford");
+							console.log(myCar.present()); // I have a Ford
+						</code></pre>
+          </section>
+
+          <section>
+            <aside class="notes">
+              Прототипы - это механизм, через который объекты JavaScript наследуют свойства и методы
+              от других объектов. Каждый объект в JavaScript имеет свойство `prototype`, которое
+              является ссылкой на другой объект. При попытке доступа к свойству или методу, не
+              найденному в текущем объекте, JavaScript автоматически ищет это свойство в цепочке
+              прототипов. Это обеспечивает мощный механизм повторного использования кода и
+              наследования в JavaScript. 
+            </aside>
+
+            <h4><i>Prototypes</i></h4>
+            <p>
+              Prototypes are the mechanism by which JavaScript objects inherit features from one
+              another.
+            </p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-7">
+              function Vehicle(name, maker) {
+                this.name = name;
+                this.maker = maker;
+              }
+              Vehicle.prototype.start = function() {
+                return "Starting " + this.name;
+              };
+            </code></pre>
+          </section>
+
+          <section>
+            <aside class="notes">
+              Методы <i>apply</i>, <i>bind</i> и <i>call</i> используются для контроля контекста this в функциях. Эти
+              методы необходимы для явного вызова функций и привязки контекста функции к конкретным
+              объектам.
+              <ul>
+                <li>
+                  <b>call:</b> Этот метод немедленно вызывает функцию greet, устанавливая this
+                  равным объекту person и передавая отдельные аргументы в функцию.
+                </li>
+                <li><b>apply:</b> Похож на call, но аргументы передаются в виде массива.</li>
+                <li>
+                  <b>bind:</b> Создает новую функцию greetPerson, где this привязан к объекту
+                  person. Эта новая функция затем вызывается с отдельными аргументами.
+                </li>
+              </ul>
+            </aside>
+
+            <p style="font-size: 20px;">
+              The methods <i>apply</i>, <i>bind</i> and <i>call</i> are utilized to manage the `this` context in
+              functions.
+            </p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-30">
+              function greet(greeting, message) {
+                return `greeting ${this.name}, message`;
+              }
+              
+              const person = { name: 'Alex' };
+              
+              // Using call
+              console.log(greet.call(person, 'Hello', 'how are you?'));
+              // Outputs: "Hello Alex, how are you?"
+              
+              // Using apply
+              console.log(greet.apply(person, ['Hi', "how's it going?"]));
+              // Outputs: "Hi Alex, how's it going?"
+              
+              // Using bind
+              const greetPerson = greet.bind(person);
+              console.log(greetPerson('Hey', "how's the mood?"));
+              // Outputs: "Hey Alex, how's the mood?"
+            </code></pre>
+          </section>
+
+          <section>
+            <aside class="notes">
+              Асинхронное программирование в JavaScript позволяет выполнять длительные операции,
+              такие как запросы к сети, без блокировки основного потока выполнения. Это достигается
+              с помощью промисов (Promises), async/await и других асинхронных паттернов. Async
+              функции возвращают промис, позволяя более удобную работу с асинхронными операциями.
+              Await используется для ожидания результата промиса, делая асинхронный код более
+              читаемым и понятным, похожим на синхронный.
+            </aside>
+            <h4><i>Asynchronous Programming</i></h4>
+            <p>
+              Asynchronous programming allows for performing network requests without blocking the
+              main thread.
+            </p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-10">
+							async function fetchData() {
+								try {
+									let response = await fetch('https://api.example.com/data');
+									let data = await response.json();
+									console.log(data);
+								} catch (error) {
+									console.error('Error:', error);
+								}
+							}
+							fetchData();
+						</code></pre>
+          </section>
+        </section>
+
+        <section>
+          <h2
+            style="
+              background: linear-gradient(
+                to right,
+                violet,
+                indigo,
+                blue,
+                green,
+                yellow,
+                orange,
+                red
+              );
+              -webkit-background-clip: text;
+              color: transparent;
+              text-align: center;
+            "
+          >
+            ES6
+          </h2>
+          <section>
+            <aside class="notes">
+              ES6 представил множество нововведений, которые значительно улучшили и расширили
+              возможности JavaScript как языка программирования.
+              <br /><br />
+              Стрелочные функции (`arrow functions`) упрощают синтаксис функций и управление
+              контекстом `this`. Они полезны для коротких функций и колбэков.
+              <br /><br />
+              Шаблонные строки (`template literals`) позволяют встраивать выражения в строки,
+              упрощая конкатенацию и форматирование.
+              <br /><br />
+              Деструктуризация (`destructuring`) упрощает извлечение данных из массивов и объектов.
+              <br /><br />
+              Параметры по умолчанию (`default parameters`) облегчают установку стандартных значений
+              для аргументов функций.
+              <br /><br />
+              Использование `let` и `const` для объявления переменных улучшает управление областью
+              видимости и предотвращает некоторые типы ошибок.
+              <br /><br />
+              Оператор распространения (`spread operator`) позволяет расширять элементы массива или
+              строку в местах, где ожидаются ноль или более аргументов или элементов.
+              <br /><br />
+              Коллекции `Map` и `Set` представляют собой структуры данных, расширяющие функционал
+              стандартных объектов и массивов. `Map` - это коллекция пар ключ-значение, а `Set` -
+              коллекция уникальных значений.
+              <br /><br />
+              Промисы (`Promises`) обеспечивают более удобный способ работы с асинхронным кодом,
+              заменяя старые подходы с использованием колбэков.
+            </aside>
+            <p style="font-size: 30px">
+              ES6 (ECMAScript 2015) introduced several new features to make JavaScript more powerful
+              and expressive.
+            </p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-50">
+            // Arrow Functions
+            const add = (a, b) => a + b;
+        
+            // Template Literals
+            const message = `Sum is ${add(10, 5)}`;  // 'Sum is 15'
+        
+            // Destructuring Assignment
+            const person = { name: 'Alice', age: 25 };
+            const { name, age } = person;  // name = 'Alice', age = 25
+        
+            // Default Parameters
+            function greet(name = 'Guest') {
+              return `Hello, ${name}!`;
+            }
+        
+            // let and const for variable declarations
+            let variable = 10;
+            const constant = 'constant value';
+        
+            // Spread Operator
+            const nums = [1, 2, 3];
+            const spreadNums = [...nums, 4, 5]; // [1, 2, 3, 4, 5]
+        
+            // Map
+            const map = new Map();
+            
+            // Adding a key-value pair to the Map
+            map.set('key1', 'value1');
+            
+            // Set
+            const set = new Set([1, 2, 3]);
+            // Sets are collections of unique values
+
+            // Promise
+            const promiseExample = new Promise((resolve, reject) => {
+              setTimeout(() => {
+                resolve("Promise resolved successfully");
+              }, 2000);
+            });
+          
+            promiseExample
+              .then(result => console.log(result)) 
+              // After 2 sec: Promise resolved successfully 
+              .catch(error => console.error(error)); 
+            </code></pre>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
