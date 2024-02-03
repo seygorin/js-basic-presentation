@@ -66,7 +66,9 @@
             </div>
           </div>
           <p style="font-size: 0.5rem">JavaScript - круто, наверное</p>
-          <p style="font-size: 0.5rem">by: <a href="https://github.com/seygorin"  target="_blank">Sergey Gorin</a></p>
+          <p style="font-size: 0.5rem">
+            by: <a href="https://github.com/seygorin" target="_blank">Sergey Gorin</a>
+          </p>
 
           <aside class="notes">
             JavaScript — это язык программирования, который используется для создания интерактивных
@@ -360,8 +362,8 @@ let isFinished = false;</code></pre>
           </h2>
           <section>
             <aside class="notes">
-              Функции в JavaScript являются одним из основных строительных блоков.
-              Они позволяют определить блоки кода для многократного использования, что улучшает
+              Функции в JavaScript являются одним из основных строительных блоков. Они позволяют
+              определить блоки кода для многократного использования, что улучшает
               структурированность и поддерживаемость кода. Функции могут быть объявлены разными
               способами и иметь разное поведение в зависимости от контекста.
             </aside>
@@ -419,9 +421,11 @@ let isFinished = false;</code></pre>
               Замыкания в JavaScript — это функции, которые запоминают и имеют доступ к переменным
               из своей области видимости, даже после того, как функция, в которой они были созданы,
               завершила выполнение. Это позволяет использовать замыкания для сохранения состояния и
-              создания приватных переменных. В примере выше, функция внутри `makeCounter` создаёт
-              замыкание вокруг переменной `count`, позволяя ей увеличиваться с каждым вызовом,
-              несмотря на то, что внешняя функция завершила выполнение.
+              создания приватных переменных. Другими словами Closure — это выражение (обычно
+              функция), которое может иметь свободные переменные вместе со средой, которая связывает
+              эти переменные. В примере выше, функция внутри `makeCounter` создаёт замыкание вокруг
+              переменной `count`, позволяя ей увеличиваться с каждым вызовом, несмотря на то, что
+              внешняя функция завершила выполнение.
             </aside>
 
             <h5><i>Closure Concept</i></h5>
@@ -441,14 +445,14 @@ let isFinished = false;</code></pre>
 
           <section>
             <aside class="notes">
-              Анонимные функции это функции без имени, которые часто используются в качестве
-              аргументов для других функций или присваиваются переменным. Они предоставляют удобный
-              способ создания компактных и самодостаточных блоков кода, что особенно полезно в
-              сценариях, где функция используется единожды или её логика относительно проста. В
-              отличие от Function Declarations, Function Expressions не поднимаются (hoisting) и их
-              можно использовать только после определения.
+              В отличие от Function Declarations, Function Expressions не поднимаются (hoisting) и
+              их можно использовать только после определения. Анонимные функции это функции без
+              имени, которые часто используются в качестве аргументов для других функций или
+              присваиваются переменным. Они предоставляют удобный способ создания компактных и
+              самодостаточных блоков кода, что особенно полезно в сценариях, где функция
+              используется единожды или её логика относительно проста.
             </aside>
-            <h5>Anonymous Functions (Function Expressions)</h5>
+            <h5>Function Expressions (+ Anonymous Functions)</h5>
             <p>Functions can be defined without a name and can be assigned to variables.</p>
             <pre><code class="javascript" data-trim data-line-numbers="1-7">
               // Function Expressions
@@ -458,26 +462,6 @@ let isFinished = false;</code></pre>
               
               console.log(square(4)); // Output: 16
             </code></pre>
-          </section>
-
-          <section>
-            <aside class="notes">
-              Стрелочные функции, введённые в ES6, предлагают более краткий синтаксис для написания
-              функций. Они особенно удобны для коротких выражений и функций обратного вызова
-              (callbacks). В отличие от традиционных функций, <code>this</code> в стрелочных
-              функциях не создается при каждом вызове функции. Вместо этого, <code>this</code> в
-              стрелочных функциях наследуется из внешнего контекста, в котором эта функция была
-              определена. Это означает, что <code>this</code> внутри стрелочной функции указывает на
-              <code>this</code> из его лексического окружения.
-            </aside>
-
-            <h5>Arrow Functions</h5>
-            <p>Introduced in ES6, arrow functions offer a concise syntax for writing functions.</p>
-            <pre><code class="javascript" data-trim data-line-numbers="1-4">
-				const multiply = (a, b) => a * b;
-				
-				console.log(multiply(2, 3)); // Output: 6
-						</code></pre>
           </section>
 
           <section>
@@ -505,6 +489,137 @@ let isFinished = false;</code></pre>
               // Data received: Sample data
             </code></pre>
           </section>
+
+          <section>
+            <aside class="notes">
+              Как правило, методу объекта обычно требуется доступ к информации, хранящейся в
+              объекте, для выполнения своей работы. Для доступа к информации внутри объекта метод
+              может использовать ключевое слово this. This в JavaScript не является фиксированным.
+              Контекст `this` в JavaScript определяется тем, как функция была вызвана. Это может
+              привести к различным значениям `this` в зависимости от типа функции и контекста
+              вызова. <br /><br />
+              В обычных функциях `this` указывает на объект, в контексте которого она была вызвана.
+              Если функция вызывается как метод объекта, `this` будет ссылаться на этот объект. В
+              глобальном контексте или внутри функции, вызванной без определенного объекта, `this`
+              будет указывать на глобальный объект (в браузерах — `window`).
+            </aside>
+
+            <h5 style="font-size: 1.5rem">Understanding <code>this</code> in Functions</h5>
+            <p style="font-size: 1.5rem">
+              Exploring how <code>this</code> behaves in different function contexts.
+            </p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-20">
+              // 'this' calculated at runtime depending on context
+              let user = { name: "John" };
+              let admin = { name: "Admin" };
+              
+              function sayHi() {
+                console.log(this.name);
+              }
+              
+              user.func = sayHi;
+              admin.f = sayHi;
+              
+              user.func(); // John (this == user)
+              admin.f(); // Admin (this == admin)
+
+              // 'this' in functions
+              function global() {
+                console.log(this); // undefined or global/window object
+              }
+              global();
+            </code></pre>
+          </section>
+          <section>
+            <aside class="notes">
+              Стрелочные функции, появившиеся в ES6, предлагают упрощённый синтаксис для написания
+              функций. Они особенно подходят для компактных выражений и функций обратного вызова. В
+              отличие от традиционных функций, значение this в стрелочных функциях определяется
+              лексически, то есть наследуется из внешнего окружения, в котором функция была объявлена. Это
+              означает, что this внутри стрелочной функции ссылается на this из её лексического
+              окружения, обеспечивая постоянство this на протяжении всего жизненного цикла функции.
+              Кроме того, стрелочные функции не имеют собственного объекта arguments и не могут быть
+              использованы как конструкторы с ключевым словом new..
+            </aside>
+
+            <h5>Arrow Functions</h5>
+            <p style="font-size: 1.5rem">
+              Introduced in ES6, arrow functions offer a concise syntax for writing functions.
+            </p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-29">
+              const obj = {
+                prop: 'Hello, World!',
+               
+                regularFunction: function() {
+                  console.log(this.prop); // Output: 'Hello, World!'
+                },
+               
+                arrowFunction: () => console.log(this.prop), 
+                // Output: undefined
+               
+                blockScopeArrowFunc() {
+                  prop = 'World!';
+                  let arrow = () => console.log(this.prop);
+                  arrow(); // Output: Hello, World!
+                },
+               
+                blockScopeRegFunc() {
+                  prop = 'World!';
+                  function regularFunction() {
+                    console.log(this.prop);
+                  }
+                  regularFunction(); // Output: World!
+                },
+              };
+
+              obj.regularFunction();
+              obj.arrowFunction();
+              obj.blockScopeArrowFunc(); 
+              obj.blockScopeRegFunc(); 
+            </code></pre>
+          </section>
+
+          <section>
+            <h5>Method of Function</h5>
+            <aside class="notes">
+              Методы <i>apply</i>, <i>bind</i> и <i>call</i> используются для контроля контекста
+              this в функциях. Эти методы необходимы для явного вызова функций и привязки контекста
+              функции к конкретным объектам.
+              <ul>
+                <li>
+                  <b>call:</b> Этот метод немедленно вызывает функцию greet, устанавливая this
+                  равным объекту person и передавая отдельные аргументы в функцию.
+                </li>
+                <li><b>apply:</b> Похож на call, но аргументы передаются в виде массива.</li>
+                <li>
+                  <b>bind:</b> Создает новую функцию greetPerson, где this привязан к объекту
+                  person. Эта новая функция затем вызывается с отдельными аргументами.
+                </li>
+              </ul>
+            </aside>
+
+            <p style="font-size: 1.1rem">
+              The methods <i>apply</i>, <i>bind</i> and <i>call</i> are utilized to manage the
+              `this` context in functions.
+            </p>
+            <pre><code class="javascript" data-trim data-line-numbers="1-30">
+              function greet(greeting, message) {
+                return `${greeting} ${this.name}, ${message}`;
+              }
+               
+              const person = { name: 'Alex' };
+              
+              console.log(greet.call(person, 'Hello', 'how are you?'));
+              // Outputs: "Hello Alex, how are you?"
+              
+              console.log(greet.apply(person, ['Hi', "how's it going?"]));
+              // Outputs: "Hi Alex, how's it going?"
+              
+              const greetPerson = greet.bind(person);
+              console.log(greetPerson('Hey', "how's the mood?"));
+              // Outputs: "Hey Alex, how's the mood?"
+            </code></pre>
+          </section>
         </section>
 
         <section>
@@ -523,7 +638,7 @@ let isFinished = false;</code></pre>
               -webkit-background-clip: text;
               color: transparent;
               text-align: center;
-              font-size: 40px;
+              font-size: 2.3rem;
             "
           >
             Scope, Classes, Prototypes, <br />
@@ -541,15 +656,15 @@ let isFinished = false;</code></pre>
               написания кода.
             </aside>
 
-            <h4 style="font-size: 20px"><i>Scope</i></h4>
-            <p style="font-size: 20px">
+            <h4 style="font-size: 1.1rem"><i>Scope</i></h4>
+            <p style="font-size: 1.1rem">
               Scope in JavaScript refers to the current context of code, which determines the
               accessibility of variables.
             </p>
             <pre><code class="javascript" data-trim data-line-numbers="1-20">
               let global = 'Accessible globally'; // Global scope
               
-              function exampleFunction() {
+              function func() {
                   let x = 'Declared inside the function'; // Local scope
                   console.log(global); // OK
                   if (true) {
@@ -557,10 +672,10 @@ let isFinished = false;</code></pre>
                       console.log(x); // OK
                       console.log(y); // OK
                   }
-                  // console.log(y); // Error: y is not defined
+                  console.log(y); // Error: y is not defined
               }
-              exampleFunction();
-              // console.log(x); // Error: x is not defined
+              func();
+              console.log(x); // Error: x is not defined
 						</code></pre>
           </section>
 
@@ -585,7 +700,7 @@ let isFinished = false;</code></pre>
 								}
 							}
 							let myCar = new Car("Ford");
-							console.log(myCar.present()); // I have a Ford
+							console.log(myCar.present()); // Output: I have a Ford
 						</code></pre>
           </section>
 
@@ -596,66 +711,26 @@ let isFinished = false;</code></pre>
               является ссылкой на другой объект. При попытке доступа к свойству или методу, не
               найденному в текущем объекте, JavaScript автоматически ищет это свойство в цепочке
               прототипов. Это обеспечивает мощный механизм повторного использования кода и
-              наследования в JavaScript. 
+              наследования в JavaScript.
             </aside>
 
             <h4><i>Prototypes</i></h4>
-            <p>
+            <p style="font-size: 2rem">
               Prototypes are the mechanism by which JavaScript objects inherit features from one
               another.
             </p>
-            <pre><code class="javascript" data-trim data-line-numbers="1-7">
+            <pre><code class="javascript" data-trim data-line-numbers="1-11">
               function Vehicle(name, maker) {
                 this.name = name;
                 this.maker = maker;
               }
               Vehicle.prototype.start = function() {
-                return "Starting " + this.name;
+                console.log("Starting " + this.name);
               };
-            </code></pre>
-          </section>
-
-          <section>
-            <aside class="notes">
-              Методы <i>apply</i>, <i>bind</i> и <i>call</i> используются для контроля контекста this в функциях. Эти
-              методы необходимы для явного вызова функций и привязки контекста функции к конкретным
-              объектам.
-              <ul>
-                <li>
-                  <b>call:</b> Этот метод немедленно вызывает функцию greet, устанавливая this
-                  равным объекту person и передавая отдельные аргументы в функцию.
-                </li>
-                <li><b>apply:</b> Похож на call, но аргументы передаются в виде массива.</li>
-                <li>
-                  <b>bind:</b> Создает новую функцию greetPerson, где this привязан к объекту
-                  person. Эта новая функция затем вызывается с отдельными аргументами.
-                </li>
-              </ul>
-            </aside>
-
-            <p style="font-size: 20px;">
-              The methods <i>apply</i>, <i>bind</i> and <i>call</i> are utilized to manage the `this` context in
-              functions.
-            </p>
-            <pre><code class="javascript" data-trim data-line-numbers="1-30">
-              function greet(greeting, message) {
-                return `greeting ${this.name}, message`;
-              }
               
-              const person = { name: 'Alex' };
+              const myVehicle = new Vehicle("Honda Civic", "Honda");
               
-              // Using call
-              console.log(greet.call(person, 'Hello', 'how are you?'));
-              // Outputs: "Hello Alex, how are you?"
-              
-              // Using apply
-              console.log(greet.apply(person, ['Hi', "how's it going?"]));
-              // Outputs: "Hi Alex, how's it going?"
-              
-              // Using bind
-              const greetPerson = greet.bind(person);
-              console.log(greetPerson('Hey', "how's the mood?"));
-              // Outputs: "Hey Alex, how's the mood?"
+              myVehicle.start(); // Output: "Starting Honda Civic"
             </code></pre>
           </section>
 
@@ -664,9 +739,9 @@ let isFinished = false;</code></pre>
               Асинхронное программирование в JavaScript позволяет выполнять длительные операции,
               такие как запросы к сети, без блокировки основного потока выполнения. Это достигается
               с помощью промисов (Promises), async/await и других асинхронных паттернов. Async
-              функции возвращают промис, позволяя более удобную работу с асинхронными операциями.
-              Await используется для ожидания результата промиса, делая асинхронный код более
-              читаемым и понятным, похожим на синхронный.
+              функции возвращают промис, позволяя проводить более удобную работу с асинхронными
+              операциями. Await используется для ожидания результата промиса, делая асинхронный код
+              более читаемым и понятным, похожим на синхронный.
             </aside>
             <h4><i>Asynchronous Programming</i></h4>
             <p>
@@ -678,7 +753,7 @@ let isFinished = false;</code></pre>
 								try {
 									let response = await fetch('https://api.example.com/data');
 									let data = await response.json();
-									console.log(data);
+									console.log(data); // Output: some data
 								} catch (error) {
 									console.error('Error:', error);
 								}
@@ -737,7 +812,7 @@ let isFinished = false;</code></pre>
               Промисы (`Promises`) обеспечивают более удобный способ работы с асинхронным кодом,
               заменяя старые подходы с использованием колбэков.
             </aside>
-            <p style="font-size: 30px">
+            <p style="font-size: 2rem">
               ES6 (ECMAScript 2015) introduced several new features to make JavaScript more powerful
               and expressive.
             </p>
